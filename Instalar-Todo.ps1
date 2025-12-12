@@ -28,24 +28,24 @@ Write-Host "Iniciando instalación masiva desde: $scriptPath" -ForegroundColor C
 $installArgs = @{
     "Apache_OpenOffice"  = "/qn TARGETDIR=`"D:\Program Files\OpenOffice`""
     "CrystalDiskInfo"    = "/VERYSILENT /NORESTART /DIR=`"D:\Program Files\CrystalDiskInfo`""
-    "Cursor Setup"       = "/S" # No simple custom path arg found commonly
-    "DiscordSetup"       = "/S" # Discord uses Squirrel, installs to AppData
-    "GeForce_Experience" = "/s" # Nvidia usually forces C:
+    "Cursor Setup"       = "/S"
+    "DiscordSetup"       = "/S"
+    "GeForce_Experience" = "/s"
     "NTLite_setup"       = "/VERYSILENT /NORESTART /DIR=`"D:\Program Files\NTLite`""
     "SteamSetup"         = "/S /D=D:\Program Files\Steam"
     "VSCodeUserSetup"    = "/VERYSILENT /MERGETASKS=!runcode /DIR=`"D:\Program Files\Microsoft VS Code`""
-    "VirtualBox"         = "--silent" # VirtualBox can be tricky silent+custom, defaulting silent
-    "winrar-x64"         = "/S" # WinRAR often ignores /D in silent exe without sfx switch, trying default
+    "VirtualBox"         = "--silent"
+    "winrar-x64"         = "/S"
     "adksetup"           = "/quiet /installpath `"D:\Program Files\Windows Kits\10`" /norestart /features OptionId.DeploymentTools"
     "dia-setup"          = "/S /D=`"D:\Program Files\Dia`""
-    "lghub_installer"    = "--silent" # Wrapper, hard to redirect
+    "lghub_installer"    = "--silent"
     "xampp"              = "--mode unattended --prefix `"D:\xampp`""
     "node"               = "/quiet INSTALLDIR=`"D:\Program Files\nodejs`""
     "git"                = "/VERYSILENT /DIR=`"D:\Program Files\Git`""
-    "ChromeSetup"        = "/silent /install" # Google Updater usually C:
+    "ChromeSetup"        = "/silent /install"
     "Antigravity"        = "/S"
-    "League of Legends"  = "--mode unattended" # Client often allows path in config, silent is basic
-    "EpicInstaller"      = "/q TARGETDIR=`"D:\Program Files\Epic Games`"" # MSI usually supports TARGETDIR
+    "League of Legends"  = "--mode unattended"
+    "EpicInstaller"      = "/q TARGETDIR=`"D:\Program Files\Epic Games`""
     "EAappInstaller"     = "/quiet"
     "SpotifyFullSetup"   = "/silent"
     "WhatsAppSetup"      = "--silent"
@@ -100,7 +100,6 @@ foreach ($key in $downloadList.Keys) {
     }
 }
 Write-Host "---------------------------`n"
-# ----------------------------------------
 
 # Archivos a ignorar o manejar manualmente
 $skipList = @(
@@ -161,8 +160,6 @@ function Install-EXE {
 $files = Get-ChildItem -Path $scriptPath -File | Where-Object { $_.Extension -match "\.(exe|msi)$" }
 
 # Filtrado inteligente de versiones (Caso WinRAR)
-# Si existe winrar-x64*.exe, ignoramos WinRAR.msi mediante la $skipList, pero verificamos si hay otros conflictos.
-# Para este script, ordenamos por fecha de modificación para asegurar que en caso de duda, instalamos lo más reciente si hubiera duplicados no listados.
 $files = $files | Sort-Object LastWriteTime
 
 foreach ($file in $files) {
@@ -178,8 +175,6 @@ foreach ($file in $files) {
         Install-EXE -FilePath $file.FullName
     }
 }
-
-
 
 Write-Host "Proceso finalizado." -ForegroundColor Cyan
 Pause
