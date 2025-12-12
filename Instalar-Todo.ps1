@@ -85,6 +85,12 @@ $downloadList = @{
     "git.exe"                           = "https://github.com/git-for-windows/git/releases/download/v2.43.0.windows.1/Git-2.43.0-64-bit.exe"
     "adksetup.exe"                      = "https://go.microsoft.com/fwlink/?linkid=2196127"
     "NTLite_setup.exe"                  = "https://downloads.ntlite.com/files/NTLite_setup_x64.exe"
+    "Cursor Setup.exe"                  = "https://downloader.cursor.sh/windows/nsis/x64"
+    "DiscordSetup.exe"                  = "https://discord.com/api/download?platform=win"
+    "GeForce_Experience.exe"            = "https://us.download.nvidia.com/GFE/GFEClient/3.28.0.417/GeForce_Experience_v3.28.0.417.exe"
+    "lghub_installer.exe"               = "https://download01.logi.com/web/ftp/pub/techsupport/gaming/lghub_installer.exe"
+    "BsgLauncher.exe"                   = "https://prod.escapefromtarkov.com/launcher/download"
+    "krita.exe"                         = "https://download.kde.org/stable/krita/5.2.2/krita-x64-5.2.2-setup.exe"
 }
 
 Write-Host "`n--- Verificando Descargas ---" -ForegroundColor Cyan
