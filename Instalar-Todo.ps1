@@ -56,6 +56,7 @@ $installArgs = @{
     "OpenVPN"            = "/qn TARGETDIR=`"D:\Program Files\OpenVPN`""
     "krita"              = "/S"
     "Docker Desktop"     = "install --quiet --accept-license --installation-dir=`"D:\Program Files\Docker\Docker`""
+    "ObsidianSetup"      = "/S"
 }
 
 # --- SECCIÓN DE DESCARGAS AUTOMÁTICAS ---
@@ -71,6 +72,7 @@ $downloadList = @{
     "GoogleDriveSetup.exe"              = "https://dl.google.com/drive-file-stream/GoogleDriveSetup.exe"
     "OpenVPNConnect.msi"                = "https://openvpn.net/downloads/openvpn-connect-v3-windows.msi"
     "Docker Desktop Installer.exe"      = "https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe"
+    "ObsidianSetup.exe"                 = "https://github.com/obsidianmd/obsidian-releases/releases/download/v1.10.6/Obsidian.1.10.6.exe"
     "Apache_OpenOffice.exe"             = "https://sourceforge.net/projects/openofficeorg.mirror/files/4.1.15/binaries/es/Apache_OpenOffice_4.1.15_Win_x86_install_es.exe/download"
     "CrystalDiskInfo.exe"               = "https://osdn.net/frs/redir.php?m=gigenet&f=crystaldiskinfo%2F78635%2FCrystalDiskInfo9_2_1.exe"
     "SteamSetup.exe"                    = "https://cdn.akamai.steamstatic.com/client/installer/SteamSetup.exe"

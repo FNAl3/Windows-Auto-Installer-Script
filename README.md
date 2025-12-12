@@ -16,7 +16,7 @@ Un script de PowerShell sencillo y potente para automatizar la instalación de s
 *   **Gaming**: Steam, Epic Games, League of Legends, EA App, GeForce Experience, War Thunder, Escape from Tarkov (launcher).
 *   **Social/Música**: Spotify, WhatsApp, Discord.
 *   **Desarrollo/IT**: VSCode, Git, Node.js, XAMPP, Docker Desktop, Nmap, OpenVPN, VirtualBox, ADK, Python (Cursor).
-*   **Ofimática/Diseño**: Apache OpenOffice, Dia, Krita.
+*   **Ofimática/Diseño**: Apache OpenOffice, Dia, Krita, Obsidian.
 *   **Utilidades**: WinRAR, CrystalDiskInfo, NTLite, LGHub.
 
 *Si pones una app que no está en la lista, intentará instalarla normalmente (con interfaz).*
