@@ -1,0 +1,9 @@
+# Ignorar binarios e instaladores
+*.exe
+*.msi
+*.zip
+*.rar
+*.7z
+
+# Carpetas temporales
+ChromeExtract/
