@@ -26,26 +26,26 @@ Write-Host "Iniciando instalación masiva desde: $scriptPath" -ForegroundColor C
 
 # Definición de argumentos de instalación silenciosa para archivos conocidos
 $installArgs = @{
-    "Apache_OpenOffice"  = "/S"
-    "CrystalDiskInfo"    = "/VERYSILENT /NORESTART"
-    "Cursor Setup"       = "/S"
-    "DiscordSetup"       = "/S"
-    "GeForce_Experience" = "/s"
-    "NTLite_setup"       = "/S"
-    "SteamSetup"         = "/S"
-    "VSCodeUserSetup"    = "/VERYSILENT /MERGETASKS=!runcode"
-    "VirtualBox"         = "--silent"
-    "winrar-x64"         = "/S"
-    "adksetup"           = "/quiet"
-    "dia-setup"          = "/S"
-    "lghub_installer"    = "--silent"
-    "xampp"              = "--mode unattended"
-    "node"               = "/quiet"
-    "git"                = "/VERYSILENT"
-    "ChromeSetup"        = "/silent /install"
+    "Apache_OpenOffice"  = "/qn TARGETDIR=`"D:\Program Files\OpenOffice`""
+    "CrystalDiskInfo"    = "/VERYSILENT /NORESTART /DIR=`"D:\Program Files\CrystalDiskInfo`""
+    "Cursor Setup"       = "/S" # No simple custom path arg found commonly
+    "DiscordSetup"       = "/S" # Discord uses Squirrel, installs to AppData
+    "GeForce_Experience" = "/s" # Nvidia usually forces C:
+    "NTLite_setup"       = "/VERYSILENT /NORESTART /DIR=`"D:\Program Files\NTLite`""
+    "SteamSetup"         = "/S /D=D:\Program Files\Steam"
+    "VSCodeUserSetup"    = "/VERYSILENT /MERGETASKS=!runcode /DIR=`"D:\Program Files\Microsoft VS Code`""
+    "VirtualBox"         = "--silent" # VirtualBox can be tricky silent+custom, defaulting silent
+    "winrar-x64"         = "/S" # WinRAR often ignores /D in silent exe without sfx switch, trying default
+    "adksetup"           = "/quiet /installpath `"D:\Program Files\Windows Kits\10`" /norestart /features OptionId.DeploymentTools"
+    "dia-setup"          = "/S /D=`"D:\Program Files\Dia`""
+    "lghub_installer"    = "--silent" # Wrapper, hard to redirect
+    "xampp"              = "--mode unattended --prefix `"D:\xampp`""
+    "node"               = "/quiet INSTALLDIR=`"D:\Program Files\nodejs`""
+    "git"                = "/VERYSILENT /DIR=`"D:\Program Files\Git`""
+    "ChromeSetup"        = "/silent /install" # Google Updater usually C:
     "Antigravity"        = "/S"
-    "League of Legends"  = "--mode unattended"
-    "EpicInstaller"      = "/q"
+    "League of Legends"  = "--mode unattended" # Client often allows path in config, silent is basic
+    "EpicInstaller"      = "/q TARGETDIR=`"D:\Program Files\Epic Games`"" # MSI usually supports TARGETDIR
     "EAappInstaller"     = "/quiet"
     "SpotifyFullSetup"   = "/silent"
     "WhatsAppSetup"      = "--silent"
@@ -53,13 +53,12 @@ $installArgs = @{
     "WarThunderLauncher" = "/S"
     "nmap"               = "/S"
     "GoogleDriveSetup"   = "--silent"
-    "OpenVPN"            = "/qn"
+    "OpenVPN"            = "/qn TARGETDIR=`"D:\Program Files\OpenVPN`""
     "krita"              = "/S"
-    "Docker Desktop"     = "install --quiet --accept-license"
+    "Docker Desktop"     = "install --quiet --accept-license --installation-dir=`"D:\Program Files\Docker\Docker`""
 }
 
 # --- SECCIÓN DE DESCARGAS AUTOMÁTICAS ---
-# Lista de URLs para descargar si los archivos no existen
 $downloadList = @{
     "ChromeSetup.exe"                   = "https://dl.google.com/tag/s/appguid%3D%7B8A69D345-D564-463C-AFF1-A69D9E530F96%7D%26needsadmin%3Dtrue%26ap%3Dx64-stable/chrome/install/ChromeStandaloneSetup64.exe"
     "EpicInstaller.msi"                 = "https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncher.msi"
@@ -72,7 +71,18 @@ $downloadList = @{
     "GoogleDriveSetup.exe"              = "https://dl.google.com/drive-file-stream/GoogleDriveSetup.exe"
     "OpenVPNConnect.msi"                = "https://openvpn.net/downloads/openvpn-connect-v3-windows.msi"
     "Docker Desktop Installer.exe"      = "https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe"
-    # Tarkov (BsgLauncher) no tiene descarga directa pública sin login.
+    "Apache_OpenOffice.exe"             = "https://sourceforge.net/projects/openofficeorg.mirror/files/4.1.15/binaries/es/Apache_OpenOffice_4.1.15_Win_x86_install_es.exe/download"
+    "CrystalDiskInfo.exe"               = "https://osdn.net/frs/redir.php?m=gigenet&f=crystaldiskinfo%2F78635%2FCrystalDiskInfo9_2_1.exe"
+    "SteamSetup.exe"                    = "https://cdn.akamai.steamstatic.com/client/installer/SteamSetup.exe"
+    "VSCodeUserSetup.exe"               = "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
+    "VirtualBox.exe"                    = "https://download.virtualbox.org/virtualbox/7.0.12/VirtualBox-7.0.12-159484-Win.exe"
+    "winrar-x64.exe"                    = "https://www.win-rar.com/fileadmin/winrar-versions/winrar/winrar-x64-624es.exe"
+    "dia-setup.exe"                     = "http://dia-installer.de/download/dia-setup-0.97.2-2-unsigned.exe"
+    "xampp-installer.exe"               = "https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.2.4/xampp-windows-x64-8.2.4-0-VS16-installer.exe/download"
+    "node-v20.msi"                      = "https://nodejs.org/dist/v20.10.0/node-v20.10.0-x64.msi"
+    "git.exe"                           = "https://github.com/git-for-windows/git/releases/download/v2.43.0.windows.1/Git-2.43.0-64-bit.exe"
+    "adksetup.exe"                      = "https://go.microsoft.com/fwlink/?linkid=2196127"
+    "NTLite_setup.exe"                  = "https://downloads.ntlite.com/files/NTLite_setup_x64.exe"
 }
 
 Write-Host "`n--- Verificando Descargas ---" -ForegroundColor Cyan
