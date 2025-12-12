@@ -34,6 +34,7 @@ Un script de PowerShell sencillo y potente para automatizar la instalación de s
 El script ya conoce los comandos silenciosos para muchas aplicaciones, incluyendo:
 *   **Navegadores**: Google Chrome, Brave.
 *   **Gaming**: Steam, Epic Games, League of Legends, EA App, GeForce Experience.
+*   **Social/Música**: Spotify, WhatsApp.
 *   **Desarrollo**: VSCode, Git, Node.js, XAMPP.
 *   **Utilidades**: WinRAR, 7-Zip, Discord, CrystalDiskInfo.
 

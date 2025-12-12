@@ -47,6 +47,8 @@ $installArgs = @{
     "League of Legends"  = "--mode unattended"
     "EpicInstaller"      = "/q"
     "EAappInstaller"     = "/quiet"
+    "SpotifyFullSetup"   = "/silent"
+    "WhatsAppSetup"      = "--silent"
 }
 
 # --- SECCIÓN DE DESCARGAS AUTOMÁTICAS ---
@@ -56,6 +58,8 @@ $downloadList = @{
     "EpicInstaller.msi"                 = "https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncher.msi"
     "EAappInstaller.exe"                = "https://origin-a.akamaihd.net/EA-Desktop-Client-Download/installer-releases/EAappInstaller.exe"
     "Install League of Legends euw.exe" = "https://lol.secure.dyn.riotcdn.net/channels/public/x/installer/current/live.euw.exe"
+    "SpotifyFullSetup.exe"              = "https://download.scdn.co/SpotifyFullSetup.exe"
+    "WhatsAppSetup.exe"                 = "https://web.whatsapp.com/desktop/windows/release/x64/WhatsAppSetup.exe"
 }
 
 Write-Host "`n--- Verificando Descargas ---" -ForegroundColor Cyan
