@@ -49,6 +49,13 @@ $installArgs = @{
     "EAappInstaller"     = "/quiet"
     "SpotifyFullSetup"   = "/silent"
     "WhatsAppSetup"      = "--silent"
+    "BsgLauncher"        = "/S" 
+    "WarThunderLauncher" = "/S"
+    "nmap"               = "/S"
+    "GoogleDriveSetup"   = "--silent"
+    "OpenVPN"            = "/qn"
+    "krita"              = "/S"
+    "Docker Desktop"     = "install --quiet --accept-license"
 }
 
 # --- SECCIÓN DE DESCARGAS AUTOMÁTICAS ---
@@ -60,6 +67,12 @@ $downloadList = @{
     "Install League of Legends euw.exe" = "https://lol.secure.dyn.riotcdn.net/channels/public/x/installer/current/live.euw.exe"
     "SpotifyFullSetup.exe"              = "https://download.scdn.co/SpotifyFullSetup.exe"
     "WhatsAppSetup.exe"                 = "https://web.whatsapp.com/desktop/windows/release/x64/WhatsAppSetup.exe"
+    "WarThunderLauncher.exe"            = "https://yupmaster.gaijinent.com/launcher/current.php?id=WarThunderLauncher"
+    "nmap-setup.exe"                    = "https://nmap.org/dist/nmap-7.94-setup.exe"
+    "GoogleDriveSetup.exe"              = "https://dl.google.com/drive-file-stream/GoogleDriveSetup.exe"
+    "OpenVPNConnect.msi"                = "https://openvpn.net/downloads/openvpn-connect-v3-windows.msi"
+    "Docker Desktop Installer.exe"      = "https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe"
+    # Tarkov (BsgLauncher) no tiene descarga directa pública sin login.
 }
 
 Write-Host "`n--- Verificando Descargas ---" -ForegroundColor Cyan

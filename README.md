@@ -35,7 +35,8 @@ El script ya conoce los comandos silenciosos para muchas aplicaciones, incluyend
 *   **Navegadores**: Google Chrome, Brave.
 *   **Gaming**: Steam, Epic Games, League of Legends, EA App, GeForce Experience.
 *   **Social/Música**: Spotify, WhatsApp.
-*   **Desarrollo**: VSCode, Git, Node.js, XAMPP.
+*   **Juegos**: Escape from Tarkov, War Thunder.
+*   **Desarrollo/IT**: VSCode, Git, Node.js, XAMPP, Docker Desktop, Nmap, OpenVPN, Google Drive.
 *   **Utilidades**: WinRAR, 7-Zip, Discord, CrystalDiskInfo.
 
 *Si pones una app que no está en la lista, intentará instalarla normalmente (con interfaz).*
